@@ -1,31 +1,74 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تعديل مقاسات الصورة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <h1>تعديل مقاسات الصورة</h1>
-
-    <input type="file" id="imageInput" accept="image/*">
-    
-    <div id="info" class="hidden">
-      <p><strong>اسم الصورة:</strong> <span id="imageName"></span></p>
-      <p><strong>الحجم:</strong> <span id="imageSize"></span></p>
-      <p><strong>الأبعاد الأصلية:</strong> <span id="originalDimensions"></span></p>
+    <div class="header">
+      <h1>تعديل مقاسات الصورة</h1>
     </div>
 
-    <div id="resizeSection" class="hidden">
-      <label>العرض (px):</label>
-      <input type="number" id="widthInput" min="1">
-      <label>الارتفاع (px):</label>
-      <input type="number" id="heightInput" min="1">
-      <button onclick="resizeImage()">تعديل الحجم</button>
-    </div>
+    <div class="content">
+      <div class="file-upload">
+        <label for="imageInput" id="uploadLabel">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <div>اختر صورة أو اسحبها هنا</div>
+        </label>
+        <input type="file" id="imageInput" accept="image/*">
+      </div>
 
-    <canvas id="canvas" class="hidden"></canvas>
+      <div id="info" class="hidden">
+        <div class="info-card">
+          <p>
+            <strong>اسم الصورة:</strong>
+            <span id="imageName"></span>
+          </p>
+          <p>
+            <strong>الحجم:</strong>
+            <span id="imageSize"></span>
+          </p>
+          <p>
+            <strong>الأبعاد الأصلية:</strong>
+            <span id="originalDimensions"></span>
+          </p>
+        </div>
+      </div>
+
+      <div id="resizeSection" class="hidden">
+        <h2>تعديل الأبعاد</h2>
+        
+        <div class="resize-controls">
+          <div class="form-group">
+            <label for="widthInput">العرض (بكسل)</label>
+            <input type="number" id="widthInput" min="1">
+          </div>
+          
+          <div class="form-group">
+            <label for="heightInput">الارتفاع (بكسل)</label>
+            <input type="number" id="heightInput" min="1">
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="resizeBtn" class="btn">
+            <i class="fas fa-expand"></i>
+            <span>تعديل الحجم</span>
+          </button>
+          <button id="downloadBtn" class="btn btn-download hidden">
+            <i class="fas fa-download"></i>
+            <span>تحميل الصورة</span>
+          </button>
+        </div>
+      </div>
+
+      <canvas id="canvas" class="hidden"></canvas>
+    </div>
   </div>
 
   <script src="script.js"></script>
